@@ -36,6 +36,9 @@ const fetch = require('node-fetch');
   // Create post schema
   await client.collections().create(postsSchema);
 
+  console.log('made it!');
+  console.log(process.env.SEARCH_ENDPOINT);
+
   // Retrieve data json
   const data = fetch(process.env.SEARCH_ENDPOINT).then((response) =>
     response.json()
