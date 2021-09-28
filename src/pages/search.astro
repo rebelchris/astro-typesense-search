@@ -1,0 +1,41 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BlogHeader from '../components/BlogHeader.astro';
+import dotenv from 'dotenv';
+dotenv.config();
+
+let title = 'Search';
+let description = 'Type the words you are searching for 🎱';
+let permalink = 'https://example.com/';
+---
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} permalink={permalink} />
+    <link rel="stylesheet" href="/search.css" />
+  </head>
+
+  <body>
+    <BlogHeader />
+    <div class="layout">
+      <article class="content">
+        <section class="intro">
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </section>
+        <section>
+            <div id="searchbox"></div>
+            <div id="hits"></div>
+        </section>
+      </article>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>
+    {`<script>
+    const TYPESENSE_HOST = '${process.env.TYPESENSE_HOST}';
+    const TYPESENSE_PORT = '${process.env.TYPESENSE_PORT}';
+    const TYPESENSE_PROTOCOL = '${process.env.TYPESENSE_PROTOCOL}';
+    const TYPESENSE_SEARCH_KEY = '${process.env.TYPESENSE_SEARCH_KEY}';
+    </script>`}
+    <script type="text/javascript" src="assets/search.js"></script>
+  </body>
+</html>

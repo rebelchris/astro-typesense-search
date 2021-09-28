@@ -1,0 +1,14 @@
+---
+const allPosts = Astro.fetchContent("./posts/*.md");
+const json = JSON.stringify(
+  allPosts.map((p) => {
+    return {
+      title: p.title,
+      description: p.description,
+      slug: p.url,
+    };
+  })
+);
+---
+
+{json}
