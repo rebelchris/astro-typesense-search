@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@astrojs/renderer-preact": "^0.2.2",
-    "astro": "^0.20.7",
+    "astro": "^2.0.10",
     "dotenv": "^10.0.0"
   },
   "dependencies": {
